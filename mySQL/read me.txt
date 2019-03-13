@@ -1,0 +1,5 @@
+jpeg file is to display the current ERD for the database.
+
+link - file is for editing the ERD.
+
+watermill tables file is for mySQL. Please run this file using mySQL workbench or mySQL server.
