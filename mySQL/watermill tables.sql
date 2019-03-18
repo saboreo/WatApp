@@ -263,3 +263,10 @@ UNLOCK TABLES;
 --
 ALTER TABLE category
 ADD FOREIGN KEY (employeeId) REFERENCES employee(employeeId);
+
+--
+-- Table structure INSERT INTO supplierContact
+--
+INSERT INTO supplierContact (supplierPostalCode, contactName, contactPosition, email, phoneNumber)
+VALUES 
+	('B112BE', 'Bacar', 'Sales Admin', 'sales@bounty.com', 07473167111);
