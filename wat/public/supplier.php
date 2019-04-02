@@ -1,9 +1,7 @@
 
 <?php require_once('../private/initialize.php'); ?>
 
-<?php
-  $subject_set = find_all_suppliers();
-?>
+<?php $subject_set = find_all_suppliers(); ?>
 
 <?php $page_title = 'Suppliers'; ?>
 <?php include(SHARED_PATH . '/header.php'); ?>
@@ -31,8 +29,6 @@
                     <th>Country</th>
                     <th>Delivery Days</th>
                     <th></th>
-                    <th></th>
-                    <th></th>
                   </tr>
                 </thead>
             <tbody>
@@ -43,9 +39,7 @@
                 <td><?php echo h($page['location']); ?></td>
                 <td><?php echo h($page['country']); ?></td>
                 <td><?php echo h($page['deliveryDays']); ?></td>
-                <td><a class="action" href="<?php echo url_for('/show-supp.php?id=' . h(u($page['postalCode']))); ?>">View</a></td>
-                <td><a class="action" href="<?php echo url_for('/pages/edit.php?id=' . h(u($page['id']))); ?>">Edit</a></td>
-                <td><a class="action" href="">Delete</a></td>
+                <td><a class="action" href="<?php echo url_for('/supplier-edit.php?id=' . h(u($page['postalCode']))); ?>">Edit</a></td>
               </tr>
             <?php } ?>
             </tbody>

@@ -1,9 +1,9 @@
 
 <?php require_once('../private/initialize.php'); ?>
 
-<?php $subject_set = find_all_sale(); ?>
+<?php $subject_set = find_authorised_orders(); ?>
 
-<?php $page_title = 'Sales'; ?>
+<?php $page_title = 'Employees'; ?>
 <?php include(SHARED_PATH . '/header.php'); ?>
 
 <div id="content-wrapper">
@@ -13,34 +13,33 @@
           <li class="breadcrumb-item">
             <a href="<?php echo url_for('index.php'); ?>">Dashboard</a>
           </li>
-          <li class="breadcrumb-item active">Sales</li>
+          <li class="breadcrumb-item active">Authorised Orders</li>
         </ol>
         <!-- Page Content -->
-        <h1>Sales</h1>
+        <h1>Authorised Orders</h1>
         <hr>
       </div>
-
       <div class="container">
         <table class="table table-striped">
                 <thead>
                   <tr>
-                    <th>Sale ID</th>
-                    <th>Category ID</th>
-                    <th>Start</th>
-                    <th>End</th>
+                    <th>ID</th>
+                    <th>Employee ID</th>
+                    <th>Supplier</th>
+                    <th>Created</th>
+                    <th>Status</th>
                     <th></th>
-                    <!-- <th></th>
-                    <th></th> -->
                   </tr>
                 </thead>
             <tbody>
             <?php while($page = mysqli_fetch_assoc($subject_set)) { ?>
               <tr>
-                <td><?php echo h($page['saleId']); ?></td>
-                <td><?php echo h($page['categoryId']); ?></td>
-                <td><?php echo h($page['startDate']); ?></td>
-                <td><?php echo h($page['endDate']); ?></td>
-                <td><a class="action" href="<?php echo url_for('/sale-edit.php?id=' . h(u($page['saleId']))); ?>">Edit</a></td>
+                <td><?php echo h($page['poID']); ?></td>
+                <td><?php echo h($page['employeeId']); ?></td>
+                <td><?php echo h($page['supplierPostalCode']); ?></td>
+                <td><?php echo h($page['created']); ?></td>
+                <td><?php echo h($page['orderStatus']); ?></td>
+                <td><a class="action" href="<?php echo url_for('/edit-emp.php?id=' . h(u($page['employeeId']))); ?>">Edit</a></td>
               </tr>
             <?php } ?>
             </tbody>
@@ -49,7 +48,6 @@
             mysqli_free_result($subject_set); // free up the data set
           ?>
       </div>
-
   </div>
 <!-- # wrapper end bellow-->
 </div>

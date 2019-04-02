@@ -27,8 +27,8 @@
                     <th>Name</th>
                     <th>Employee ID</th>
                     <th></th>
-                    <th></th>
-                    <th></th>
+                    <!-- <th></th>
+                    <th></th> -->
                   </tr>
                 </thead>
             <tbody>
@@ -37,9 +37,9 @@
                 <td><?php echo h($page['categoryId']); ?></td>
                 <td><?php echo h($page['categoryName']); ?></td>
                 <td><?php echo h($page['employeeId']); ?></td>
-                <td><a class="action" href="<?php echo url_for('/pages/show.php?id=' . h(u($page['id']))); ?>">View</a></td>
+                <!-- <td><a class="action" href="<?php echo url_for('/pages/show.php?id=' . h(u($page['id']))); ?>">View</a></td> -->
                 <td><a class="action" href="<?php echo url_for('/pages/edit.php?id=' . h(u($page['id']))); ?>">Edit</a></td>
-                <td><a class="action" href="">Delete</a></td>
+                <!-- <td><a class="action" href="">Delete</a></td> -->
               </tr>
             <?php } ?>
             </tbody>
