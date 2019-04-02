@@ -13,9 +13,10 @@
     <!-- <title></title> -->
 
     <!-- Custom fonts for this template-->
-    <link rel="stylesheet" type="text/css" href=" <?php echo url_for('gulpfile/fontawesome-free/css/all.min.css'); ?>">
+    <!-- <link rel="stylesheet" type="text/css" href=" <?php echo url_for('gulpfile/fontawesome-free/css/all.min.css'); ?>"> -->
+    <link rel="stylesheet" href="<?php echo url_for('css/fonts.css'); ?>">
     <!-- Page level plugin CSS-->
-    <link rel="stylesheet" href="<?php echo url_for('gulpfile/datatables/dataTables.bootstrap4.css'); ?>">
+    <link rel="stylesheet" href="<?php echo url_for('gulpfile/bootstrap/css/bootstrap.css'); ?>">
     <!-- Custom styles for this template-->
     <link rel="stylesheet" href="<?php echo url_for('css/admin.css'); ?>">
 
@@ -28,7 +29,7 @@
     <a class="navbar-brand mr-1" href="index.html">Garden Emporium</a>
 
     <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
-      <i class="fas fa-bars"></i>▼
+      <i class="fas fa-bars"></i>
     </button>
 
     <!-- Navbar Search -->
@@ -74,16 +75,28 @@
         </a>
       </li>
 
-      <li class="nav-item dropdown">
+      <!-- <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <!-- <i class="fas fa-fw fa-folder"></i> -->
-          <span>Account Settings???</span>▼
+          <i class="fas fa-fw fa-folder"></i>
+          <span>Account Settings</span>
         </a>
         <div class="dropdown-menu" aria-labelledby="pagesDropdown">
           <h6 class="dropdown-header">Login Screens:</h6>
           <a class="dropdown-item" href="login.html">Login</a>
           <a class="dropdown-item" href="register.html">Register</a>
           <a class="dropdown-item" href="forgot-password.html">Forgot Password</a>
+          <div class="dropdown-divider"></div>
+        </div>
+      </li> -->
+
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <span>Orders</span>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+          <a class="dropdown-item" href="<?php echo url_for('/orders-unauthorised.php'); ?>">Unauthorised Orders</a>
+          <a class="dropdown-item" href="<?php echo url_for('/orders-authorised.php'); ?>">Authorised Orders</a>
+          <!-- <a class="dropdown-item" href="#">All Orders</a> -->
           <div class="dropdown-divider"></div>
         </div>
       </li>
@@ -124,10 +137,15 @@
             <span>Supplier Price List</span></a>
       </li>
 
-      <li class="nav-item">
-          <a class="nav-link" href="<?php echo url_for('/sale.php'); ?>">
-            <!-- <i class="fas fa-fw fa-category"></i> -->
-            <span>Sales</span></a>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="<?php echo url_for('/sale.php'); ?>" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <span>Sales</span>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="pagesDropdown">
+        <a class="dropdown-item" href="<?php echo url_for('/sale.php'); ?>">All Sales</a>
+          <a class="dropdown-item" href="<?php echo url_for('/sale-new.php'); ?>">New Sale</a>
+          <div class="dropdown-divider"></div>
+        </div>
       </li>
 
     </ul>

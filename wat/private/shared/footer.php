@@ -40,6 +40,7 @@
   <!--  Core plugin JavaScript--> 
   <script src="gulpfile/jquery-easing/jquery.easing.min.js"></script>
 
+  <script src="../public/gulpfile/bootstrap/js/bootstrap.min.js"></script>
   <!-- custom scripts for all pages -->
   <script src="js/admin.min.js"></script>
   

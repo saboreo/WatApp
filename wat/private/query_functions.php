@@ -56,6 +56,18 @@
         return $result;
     }
 
+    function find_employee_by_id($id) {
+        global $db;
+
+        $sql = "SELECT * FROM employee ";
+        $sql .= "WHERE employeeId='" . $id . "'";
+        $result = mysqli_query($db, $sql);
+        confirm_result_set($result);
+        $subject = mysqli_fetch_assoc($result); //Extract data from array
+        mysqli_free_result($result);
+        return $subject; // returns an assoc. full array
+    }
+
     function find_all_sale() {
         global $db;
         $sql = "SELECT * FROM sale";
@@ -64,11 +76,11 @@
         return $result;
     }
 
-    function find_employee_by_id($id) {
+    function find_sale_by_id($id) {
         global $db;
 
-        $sql = "SELECT * FROM employee ";
-        $sql .= "WHERE employeeId='" . $id . "'";
+        $sql = "SELECT * FROM sale ";
+        $sql .= "WHERE saleId='" . $id . "'";
         $result = mysqli_query($db, $sql);
         confirm_result_set($result);
         $subject = mysqli_fetch_assoc($result); //Extract data from array
@@ -87,5 +99,64 @@
         mysqli_free_result($result);
         return $subject; // returns an assoc. full array
     }
+
+    function find_unauthorised_orders() {
+        global $db;
+        $sql = "SELECT poID, employeeId, supplierPostalCode, created, orderStatus ";
+        $sql .= "FROM purchaseOrder ";
+        $sql .= "WHERE orderStatus = 'Unauthorised';";
+        $result = mysqli_query($db, $sql);
+        confirm_result_set($result);
+        return $result;
+    }
+
+    function find_authorised_orders() {
+        global $db;
+        $sql = "SELECT poID, employeeId, supplierPostalCode, created, orderStatus ";
+        $sql .= "FROM purchaseOrder ";
+        $sql .= "WHERE orderStatus = 'Authorised';";
+        $result = mysqli_query($db, $sql);
+        confirm_result_set($result);
+        return $result;
+    }
+
+    function find_poDetails_by_id($id) {
+        global $db;
+        $sql = "SELECT poDetails.poID, poDetails.itemId, poDetails.quantity, purchaseOrder.created, ";
+        $sql .= "purchaseOrder.employeeId, purchaseOrder.supplierPostalCode, supplier.deliveryDays, ";
+        $sql .= "concat(employee.firstName,' ', employee.lastName) AS 'employeeName', ";
+        $sql .= "itemSupplier.currentPrice, ";
+        $sql .= "round(itemSupplier.currentPrice*poDetails.quantity, 2) AS 'total' ";
+        $sql .= "FROM poDetails ";
+        $sql .= "INNER JOIN purchaseOrder ON  poDetails.poID=purchaseOrder.poID ";
+        $sql .= "INNER JOIN supplier ON purchaseOrder.supplierPostalCode=supplier.postalCode ";
+        $sql .= "INNER JOIN employee ON purchaseOrder.employeeId = employee.employeeId ";
+        $sql .= "INNER JOIN itemSupplier ON poDetails.itemId=itemSupplier.itemId AND purchaseOrder.supplierPostalCode = itemsupplier.postalCode ";
+        $sql .= "WHERE purchaseOrder.poID='" . $id . "' ";
+        $result = mysqli_query($db, $sql);
+        confirm_result_set($result);
+        return $result; // returns an assoc. full array
+    }
+
+    // function find_poDetails_by_id($id) {
+    //     global $db;
+    //     $sql = "SELECT poDetails.poID, poDetails.itemId, poDetails.quantity, purchaseOrder.created, ";
+    //     $sql .= "purchaseOrder.employeeId, purchaseOrder.supplierPostalCode ";
+    //     $sql .= "FROM poDetails ";
+    //     $sql .= "JOIN purchaseOrder ON  poDetails.poID=purchaseOrder.poID ";
+    //     $sql .= "WHERE purchaseOrder.poID='" . $id . "' ";
+    //     $result = mysqli_query($db, $sql);
+    //     confirm_result_set($result);
+    //     return $result; // returns an assoc. full array
+    // }
+
+    // function find_poDetails_by_id($id) {
+    //     global $db;
+    //     $sql = "SELECT itemId, quantity FROM poDetails ";
+    //     $sql .= "WHERE poID= '" . $id . "'";
+    //     $result = mysqli_query($db, $sql);
+    //     confirm_result_set($result);
+    //     return $result; // returns an assoc. full array
+    // }
 
     ?>
