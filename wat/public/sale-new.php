@@ -4,7 +4,7 @@
 <?php
     // $id = $_GET['id'] ?? '1';
 
-    // $subject = find_sale_by_id($id); //Extract data from array
+    $subject = find_category_ids() //Extract data from array
 ?>
 <?php $page_title = 'New Sale'; ?>
 <?php include(SHARED_PATH . '/header.php'); ?>
@@ -27,43 +27,64 @@
         </div>
         <div class="container">
 
-            <form>
+            <form action="<?php echo url_for('/sale-create.php'); ?>" method="post">
                 <fieldset class="form-group">
                     <div class="row">
-                        <label class="col-sm-4 col-form-label">Sale ID:</label>
-                        <div class="col-sm-8">
-                        <input type="text" class="form-control" value="<?php echo h($subject['saleId']); ?>">
-                        <br>
-                        </div>
-
                         <label class="col-sm-4 col-form-label">Discount %:</label>
                         <div class="col-sm-8">
-                        <input type="text" class="form-control" value="<?php echo h($subject['discount']); ?>">
+                        <input type="text" class="form-control" placeholder="15" name="discount">
                         <br>
                         </div>
-
-                        <label class="col-sm-4 col-form-label">Category ID:</label>
+                        <!-- <label class="col-sm-4 col-form-label">Category ID:</label>
                         <div class="col-sm-8">
-                        <input type="text" class="form-control" value="<?php echo h($subject['categoryId']); ?>">
+                        <input type="text" class="form-control" placeholder="20563" name="categoryId">
+                        <br>
+                        </div> -->
+                        <label class="col-sm-4 col-form-label">Select Category ID: (select one)</label>
+                        <div class="col-sm-8">
+                        <select class="form-control" name="categoryId">
+                            <?php while($page = mysqli_fetch_assoc($subject)) { ?>
+                            <option>
+                            <td><?php echo h($page['categoryId']); ?></td>
+                            </option>
+                            <?php } ?>
+                        </select>
                         <br>
                         </div>
-
                         <label class="col-sm-4 col-form-label">Start Date:</label>
                         <div class="col-sm-8">
-                        <input type="text" class="form-control" value="<?php echo h($subject['startDate']); ?>">
+                        <input type="text" class="form-control" placeholder="2019-03-10" name="startDate">
                         <br>
                         </div>
-
                         <label class="col-sm-4 col-form-label">End Date:</label>
                         <div class="col-sm-8">
-                        <input type="text" class="form-control" value="<?php echo h($subject['endDate']); ?>">
+                        <input type="text" class="form-control" placeholder="2019-03-17" name="endDate">
                         <br>
                         </div>
                     </div>
                 </fieldset>
-                <button type="button" class="col-sm-2 btn btn-success">Update</button>
+                <button type="submit" class="col-sm-2 btn btn-success">Submit</button>
             </form>
 
+            <!-- <form action="<?php echo url_for('/sale-create.php'); ?>" method="post">
+                <div class="form-group">
+                <label for="pwd">discount: %</label>
+                <input type="text" class="form-control" placeholder="15" name="discount">
+                </div>
+                <div class="form-group">
+                <label for="email">category id:</label>
+                <input type="text" class="form-control" placeholder="20563" name="categoryId">
+                </div>
+                <div class="form-group">
+                <label for="pwd">start date:</label>
+                <input type="text" class="form-control" placeholder="2019-03-10" name="startDate">
+                </div>
+                <div class="form-group">
+                <label for="pwd">end date:</label>
+                <input type="text" class="form-control" placeholder="2019-03-17" name="endDate">
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form> -->
         </div>
     </div>
 <!-- # wrapper end bellow-->
