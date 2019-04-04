@@ -18,6 +18,14 @@
         return $result;
     }
 
+    function find_category_ids() {
+        global $db;
+        $sql = "SELECT categoryId FROM category ";
+        $result = mysqli_query($db, $sql);
+        confirm_result_set($result);
+        return $result;
+    }
+
     function find_all_item() {
         global $db;
         $sql = "SELECT * FROM item ";
@@ -150,13 +158,24 @@
     //     return $result; // returns an assoc. full array
     // }
 
-    // function find_poDetails_by_id($id) {
-    //     global $db;
-    //     $sql = "SELECT itemId, quantity FROM poDetails ";
-    //     $sql .= "WHERE poID= '" . $id . "'";
-    //     $result = mysqli_query($db, $sql);
-    //     confirm_result_set($result);
-    //     return $result; // returns an assoc. full array
-    // }
-
+    function create_sale($discount, $categoryId, $startDate, $endDate) {
+        global $db;
+        $sql = "INSERT INTO sale ";
+        $sql .= "(discount, categoryId, startDate, endDate) ";
+        $sql .= "VALUES (";
+        $sql .= "'" . $discount . "',";
+        $sql .= "'" . $categoryId . "',";
+        $sql .= "'" . $startDate . "',";
+        $sql .= "'" . $endDate . "'";
+        $sql .= ")";
+        $result = mysqli_query($db, $sql);
+        //for insert statements $result is true/false
+        if($result) {
+            return true;
+        } else {
+            echo mysqli_error($db);
+            db_disconnect($db);
+            exit;
+        }
+    }
     ?>
