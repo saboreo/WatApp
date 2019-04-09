@@ -34,7 +34,7 @@
                     <!-- <th>Top Rated</th> -->
                     <!-- <th>Sale ID</th> -->
                     <th></th>
-                    <th></th>
+                    <!-- <th></th> -->
                     <!-- <th></th> -->
                   </tr>
                 </thead>
@@ -44,15 +44,14 @@
                 <td><?php echo h($page['itemId']); ?></td>
                 <td><?php echo h($page['title']); ?></td>
                 <td><?php echo h($page['categoryId']); ?></td>
-                <td><?php echo h($page['currentPrice']); ?></td>
+                <td>£<?php echo h($page['currentPrice']); ?></td>
                 <!-- <td><?php echo ($page['galleryFile']); ?></td> -->
                 <td><?php echo h($page['sellingState']); ?></td>
-<!--                 <td><?php echo h($page['saleTitle']); ?></td> -->
+                <!--<td><?php echo h($page['saleTitle']); ?></td> -->
                 <!-- <td><?php echo h($page['topRated']); ?></td> -->
                 <!-- <td><?php echo h($page['saleId']); ?></td> -->
-                <td><a class="action" href="<?php echo url_for('/pages/show.php?id=' . h(u($page['id']))); ?>">View</a></td>
-                <td><a class="action" href="<?php echo url_for('/pages/edit.php?id=' . h(u($page['id']))); ?>">Edit</a></td>
-                <!-- <td><a class="action" href="">Delete</a></td> -->
+                <td><a class="action" href="<?php echo url_for('/stock-view.php?id=' . h(u($page['itemId']))); ?>">View</a></td>
+                <!-- <td><a class="action" href="#">Edit</a></td> -->
               </tr>
             <?php } ?>
             </tbody>

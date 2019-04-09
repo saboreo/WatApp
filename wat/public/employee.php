@@ -39,7 +39,7 @@
                 <td><?php echo h($page['lastName']); ?></td>
                 <td><?php echo h($page['email']); ?></td>
                 <td><?php echo h($page['jobRole']); ?></td>
-                <td><a class="action" href="<?php echo url_for('/edit-emp.php?id=' . h(u($page['employeeId']))); ?>">Edit</a></td>
+                <td><a class="action" href="<?php echo url_for('/employee-edit.php?id=' . h(u($page['employeeId']))); ?>">Edit</a></td>
               </tr>
             <?php } ?>
             </tbody>

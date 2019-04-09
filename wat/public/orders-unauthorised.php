@@ -39,7 +39,7 @@
                 <td><?php echo h($page['supplierPostalCode']); ?></td>
                 <td><?php echo h($page['created']); ?></td>
                 <td><?php echo h($page['orderStatus']); ?></td>
-                <td><a class="action" href="<?php echo url_for('/order-details.php?id=' . h(u($page['poID']))); ?>">Edit</a></td>
+                <td><a class="action" href="<?php echo url_for('/order-status-edit.php?id=' . h(u($page['poID']))); ?>">Edit</a></td>
               </tr>
             <?php } ?>
             </tbody>

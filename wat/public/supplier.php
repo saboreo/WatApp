@@ -19,6 +19,7 @@
         <h1>Suppliers</h1>
         <hr>
       </div>
+      
       <div class="container">
         <table class="table table-striped">
                 <thead>
@@ -39,7 +40,7 @@
                 <td><?php echo h($page['location']); ?></td>
                 <td><?php echo h($page['country']); ?></td>
                 <td><?php echo h($page['deliveryDays']); ?></td>
-                <td><a class="action" href="<?php echo url_for('/supplier-edit.php?id=' . h(u($page['postalCode']))); ?>">Edit</a></td>
+                <td><a class="action" href="<?php echo url_for('/supplier-edit.php?id=' . h(u($page['postalCode']))); ?>">View</a></td>
               </tr>
             <?php } ?>
             </tbody>
@@ -53,3 +54,5 @@
 </div>
 
 <?php include(SHARED_PATH . '/footer.php'); ?>
+
+<?php ?>

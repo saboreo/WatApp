@@ -25,7 +25,10 @@
                 <thead>
                   <tr>
                     <th>Sale ID</th>
-                    <th>Category ID</th>
+                    <th>Discount</th>
+                    <!-- <th>Category ID</th> -->
+                    <th>Item ID</th>
+                    <!-- <th>Category Name</th> -->
                     <th>Start</th>
                     <th>End</th>
                     <th></th>
@@ -37,7 +40,10 @@
             <?php while($page = mysqli_fetch_assoc($subject_set)) { ?>
               <tr>
                 <td><?php echo h($page['saleId']); ?></td>
-                <td><?php echo h($page['categoryId']); ?></td>
+                <td><?php echo h($page['discount']); ?>%</td>
+                <!-- <td><?php echo h($page['categoryId']); ?></td> -->
+                <td><?php echo h($page['itemId']); ?></td>
+                <!-- <td><?php echo h($page['categoryName']); ?></td> -->
                 <td><?php echo h($page['startDate']); ?></td>
                 <td><?php echo h($page['endDate']); ?></td>
                 <td><a class="action" href="<?php echo url_for('/sale-edit.php?id=' . h(u($page['saleId']))); ?>">Edit</a></td>

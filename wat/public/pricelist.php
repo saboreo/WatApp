@@ -30,9 +30,6 @@
                     <th>Supplier</th>
                     <th>Post Code</th>
                     <th>Delivery Days</th>
-                    <th></th>
-                    <th></th>
-                    <!-- <th></th> -->
                   </tr>
                 </thead>
             <tbody>
@@ -43,9 +40,6 @@
                 <td><?php echo h($page['supplierName']); ?></td>
                 <td><?php echo h($page['postalCode']); ?></td>
                 <td><?php echo h($page['deliveryDays']); ?></td>
-                <td><a class="action" href="<?php echo url_for('/pages/show.php?id=' . h(u($page['id']))); ?>">View</a></td>
-                <td><a class="action" href="<?php echo url_for('/pages/edit.php?id=' . h(u($page['id']))); ?>">Edit</a></td>
-                <!-- <td><a class="action" href="">Delete</a></td> -->
               </tr>
             <?php } ?>
             </tbody>
